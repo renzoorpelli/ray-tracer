@@ -1,4 +1,4 @@
-## C++ Commands
+## Useful commands
 
 ### cmake
 build cmake as release `cmake --build build --config release`
