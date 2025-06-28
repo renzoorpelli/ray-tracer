@@ -1,27 +1,42 @@
-## Useful commands
+# Ray Tracer
 
-### cmake
-build cmake as release `cmake --build build --config release`
+A simple bare-metal ray tracer written in C++.
 
+---
 
-## transform binary to ppm image
-{binary_name} > image.ppm
+## Useful Commands
 
+### Build with CMake
+
+To build the project in release mode, run:
+```
+cmake --build build --config release
+```
+
+### Generate PPM Image
+
+After building, run the binary to generate a PPM image:
+```
+./{binary_name} > image.ppm
+```
+Replace `{binary_name}` with the actual name of your compiled binary.
+
+---
 
 ## Glossary
 
-`viewport` : rectangular area on a display device where 2d / 3d scene is rendered and displayed.
-`camera`: point where all rays originate (also called eye)
-`ray`: line with origin and direction
-`aspect ratio`: ratio of width to height of image (e.g 16:9)
-`pixel spacing`: determime how far apart the pixels are in 3d space
-`camera origin`: point where all ray starts (0,0,0)
+- **viewport**: Rectangular area on a display device where a 2D/3D scene is rendered and displayed.
+- **camera**: Point where all rays originate (also called "eye").
+- **ray**: Line with an origin and direction.
+- **aspect ratio**: Ratio of width to height of the image (e.g., 16:9).
+- **pixel spacing**: Determines how far apart the pixels are in 3D space.
+- **camera origin**: Point where all rays start (typically (0, 0, 0)).
 
+---
 
-## Math reference
+## Math Reference
 
-`r`: radious of the sphere
-
-`C`: coordinates of the center of the sphere (or vector c) C(Cx, Cy, Cz)
-
-`|v|`: magintude or length of the vector. v = √x^2 + y^2 + z^2
+- **r**: Radius of the sphere.
+- **C**: Coordinates of the center of the sphere (vector C: (Cx, Cy, Cz)).
+- **|v|**: Magnitude or length of the vector.  
+  \|v\| = √(x² + y² + z²)
