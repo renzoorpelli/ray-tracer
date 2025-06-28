@@ -4,21 +4,41 @@
 #include "vec3.h"
 #include "ray.h"
 
-bool hit_sphere(const point3 &center, double radius, const ray &r)
+/// @brief Check if a ray intersects with a sphere.
+/// This function calculates the intersection of a ray with a sphere defined by its center and radius.
+/// It uses the quadratic formula to determine if the ray intersects the sphere.
+/// @param center 
+/// @param radius 
+/// @param r 
+/// @return 
+double hit_sphere(const point3 &center, double radius, const ray &r)
 {
     vec3 oc = center - r.origin();
-    auto a = dot(r.direction(), r.direction());
-    auto b = -2.0 * dot(r.direction(), oc);
-    auto c = dot(oc, oc) - radius * radius;
-    auto discriminant = b * b - 4 * a * c;
-    return (discriminant >= 0);
+    auto a = r.direction().length_squared();
+    auto h = dot(r.direction(), oc);
+    auto c = oc.length_squared() - radius*radius;
+    auto discriminant = h*h - a*c;
+
+    if (discriminant < 0) {
+        return -1.0;
+    } else {
+        return (h - std::sqrt(discriminant)) / a;
+    }
 }
 
+/// @brief Calculate the color seen along a ray.
+/// This function determines the color of a pixel based on the ray's intersection with a sphere.
+/// @param r 
+/// @return 
 color ray_color(const ray &r)
 {
-    if (hit_sphere(point3(0, 0, -1), 0.5, r))
-        return color(1, 0, 0);
-        
+    auto t = hit_sphere(point3(0, 0, -1), 0.5, r);
+    if (t > 0.0)
+    {
+        vec3 N = unit_vector(r.at(t) - vec3(0, 0, -1));
+        return 0.5 * color(N.x() + 1, N.y() + 1, N.z() + 1);
+    }
+
     vec3 unit_direction = unit_vector(r.direction());
     auto a = 0.5 * (unit_direction.y() + 1.0);
     return (1.0 - a) * color(1.0, 1.0, 1.0) + a * color(0.5, 0.7, 1.0);
@@ -27,8 +47,8 @@ color ray_color(const ray &r)
 int main()
 {
     /*
-        P3
-
+         This is a simple ray tracer that outputs a P3 (ASCII) PPM image.
+         The PPM format is a simple image format that can be easily read and written.
          the p3 menas colors are in ASCII, the 3 columns and 2 rows,
          then 255 for max color, then RGB triplets
      */
@@ -65,7 +85,7 @@ int main()
 
     for (int j = 0; j < image_height; j++)
     {
-        std::clog << " \rScanlines remaining: " << (image_height - j) << ' ' << std::flush;
+        std::clog << " \r Scanlines remaining: " << (image_height - j) << ' ' << std::flush;
 
         for (int i = 0; i < image_width; i++)
         {

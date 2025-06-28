@@ -31,7 +31,7 @@ public:
     /// @brief computation to see what color is seen along the ray
     /// @param t scalar value
     /// @return
-    point3 at(double t)
+    point3 at(double t) const
     {
         return orig + t * dir;
     }
