@@ -1,3 +1,0 @@
-/Users/renzoorpelli/Documents/dev/c-bare-metal/ray-tracer/ray-tracer/build/CMakeFiles/ray_tracer.dir
-/Users/renzoorpelli/Documents/dev/c-bare-metal/ray-tracer/ray-tracer/build/CMakeFiles/edit_cache.dir
-/Users/renzoorpelli/Documents/dev/c-bare-metal/ray-tracer/ray-tracer/build/CMakeFiles/rebuild_cache.dir
