@@ -1,5 +1,5 @@
 #ifndef COLOR.H
-#define COLOR .H
+#define COLOR.H
 
 #define BYTE_RANGE 255.999
 
