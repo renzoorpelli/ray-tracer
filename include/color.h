@@ -6,12 +6,12 @@
 #include "vec3.h"
 #include <iostream>
 
-using color = vec3;
+using Color = Vec3;
 
 /// @brief Write a single pixel color out to the standard output stream
 /// @param out
 /// @param pixel_color
-void write_color(std::ostream &out, const color &pixel_color)
+void write_color(std::ostream &out, const Color &pixel_color)
 {
     auto r = pixel_color.x();
     auto g = pixel_color.y();
