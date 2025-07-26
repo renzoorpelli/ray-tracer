@@ -40,3 +40,9 @@ Replace `{binary_name}` with the actual name of your compiled binary.
 - **C**: Coordinates of the center of the sphere (vector C: (Cx, Cy, Cz)).
 - **|v|**: Magnitude or length of the vector.  
   \|v\| = √(x² + y² + z²)
+
+
+## Key concepts
+- Hittable = things you can hit (spheres, planes)
+- HitRecord = result data from a hit
+- HittableList = collection of Hittable objects
