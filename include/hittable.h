@@ -18,7 +18,7 @@ struct Hittable {
   } object;
 };
 
-bool hitObject(const Hittable &obj, const Ray &r, double ray_tmin,
+bool HitObject(const Hittable &obj, const Ray &r, double ray_tmin,
                double ray_tmax, HitRecord &rec);
 
 #endif

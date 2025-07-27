@@ -8,7 +8,7 @@ struct Sphere {
   double radius;
 };
 
-bool hitSphere(const Sphere &sphere, const Ray &r, double ray_tmin, double ray_tmax,
-               HitRecord &rec);
+bool HitSphere(const Sphere &sphere, const Ray &r, double ray_tmin,
+               double ray_tmax, HitRecord &rec);
 
 #endif

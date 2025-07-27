@@ -3,15 +3,15 @@
 
 #define BYTE_RANGE 255.999
 
-#include <iostream>
 #include "vec3.h"
+#include <iostream>
 
 using Color = Vec3;
 
 /// @brief Write a single pixel color out to the standard output stream
 /// @param out
 /// @param pixel_color
-inline void write_color(std::ostream &out, const Color &pixel_color) {
+inline void WriteColor(std::ostream &out, const Color &pixel_color) {
   auto r = pixel_color.x();
   auto g = pixel_color.y();
   auto b = pixel_color.z();

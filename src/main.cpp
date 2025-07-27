@@ -9,14 +9,14 @@
 /// intersection with a sphere.
 /// @param r
 /// @return
-Color rayColor(const Ray &r, const HittableList &world) {
+Color RayColor(const Ray &r, const HittableList &world) {
   HitRecord rec;
 
-  if (world.hit(r, 0, infinity, rec)) {
+  if (world.Hit(r, 0, infinity, rec)) {
     return 0.5 * (rec.normal + Color(1, 1, 1));
   }
 
-  Vec3 unit_direction = unit_vector(r.direction());
+  Vec3 unit_direction = unit_vector(r.Direction());
   auto a = 0.5 * (unit_direction.y() + 1.0);
   return (1.0 - a) * Color(1.0, 1.0, 1.0) + a * Color(0.5, 0.7, 1.0);
 }
@@ -45,8 +45,8 @@ int main() {
 
   // World
   HittableList world;
-  world.add(Hittable{HittableType::HITTABLE_SPHERE, {{Point3(0, 0, -1), 0.5}}});
-  world.add(
+  world.Add(Hittable{HittableType::HITTABLE_SPHERE, {{Point3(0, 0, -1), 0.5}}});
+  world.Add(
       Hittable{HittableType::HITTABLE_SPHERE, {{Point3(0, -100.5, -1), 100}}});
 
   // Calculate the vectors across the horizontal and down the vertical viewport
@@ -77,8 +77,8 @@ int main() {
       auto ray_direction = pixel_center - camera_center;
       Ray r(camera_center, ray_direction);
 
-      Color pixel_color = rayColor(r, world);
-      write_color(std::cout, pixel_color);
+      Color pixel_color = RayColor(r, world);
+      WriteColor(std::cout, pixel_color);
     }
   }
   std::clog << "\r Done. \n";

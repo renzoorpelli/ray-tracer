@@ -16,16 +16,16 @@ public:
 
   /// @brief the start point of the ray
   /// @return
-  const Point3 &origin() const { return orig; }
+  const Point3 &Origin() const { return orig; }
 
   /// @brief where the ray points to
   /// @return
-  const Vec3 &direction() const { return dir; }
+  const Vec3 &Direction() const { return dir; }
 
   /// @brief computation to see what color is seen along the ray
   /// @param t scalar value
   /// @return
-  Point3 at(double t) const { return orig + t * dir; }
+  Point3 At(double t) const { return orig + t * dir; }
 
 private:
   Point3 orig;

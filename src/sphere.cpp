@@ -2,11 +2,11 @@
 #include "../include/hit_record.h"
 #include <cmath>
 
-bool hitSphere(const Sphere &sphere, const Ray &r, double ray_tmin, double ray_tmax,
-               HitRecord &rec) {
-  Vec3 oc = sphere.center - r.origin();
-  auto a = r.direction().length_squared();
-  auto h = dot(r.direction(), oc);
+bool HitSphere(const Sphere &sphere, const Ray &r, double ray_tmin,
+               double ray_tmax, HitRecord &rec) {
+  Vec3 oc = sphere.center - r.Origin();
+  auto a = r.Direction().length_squared();
+  auto h = dot(r.Direction(), oc);
   auto c = oc.length_squared() - sphere.radius * sphere.radius;
   auto discriminant = h * h - a * c;
 
@@ -22,7 +22,7 @@ bool hitSphere(const Sphere &sphere, const Ray &r, double ray_tmin, double ray_t
       return false;
   }
   rec.t = root;
-  rec.p = r.at(rec.t);
+  rec.p = r.At(rec.t);
   Vec3 outward_normal = (rec.p - sphere.center) / sphere.radius;
   rec.set_face_normal(r, outward_normal);
   rec.normal = (rec.p - sphere.center) / sphere.radius;
