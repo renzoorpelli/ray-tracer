@@ -1,8 +1,7 @@
 #ifndef HIT_RECORD_H
 #define HIT_RECORD_H
 
-#include "ray.h"
-#include "vec3.h"
+#include "rtweekend.h"
 
 struct HitRecord {
 public:
