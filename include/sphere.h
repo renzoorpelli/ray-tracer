@@ -2,13 +2,14 @@
 #define SPHERE_H
 
 #include "hit_record.h"
+#include "interval.h"
 
 struct Sphere {
   Point3 center;
   double radius;
 };
 
-bool HitSphere(const Sphere &sphere, const Ray &r, double ray_tmin,
-               double ray_tmax, HitRecord &rec);
+bool HitSphere(const Sphere &sphere, const Ray &r, Interval interval,
+               HitRecord &rec);
 
 #endif

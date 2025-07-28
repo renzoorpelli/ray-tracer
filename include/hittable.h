@@ -3,6 +3,7 @@
 
 #include "hit_record.h"
 #include "sphere.h"
+#include "interval.h"
 #include <variant>
 
 enum class HittableType {
@@ -18,7 +19,7 @@ struct Hittable {
   } object;
 };
 
-bool HitObject(const Hittable &obj, const Ray &r, double ray_tmin,
-               double ray_tmax, HitRecord &rec);
+bool HitObject(const Hittable &obj, const Ray &r, Interval interval,
+               HitRecord &rec);
 
 #endif

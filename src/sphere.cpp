@@ -2,11 +2,11 @@
 #include "../include/hit_record.h"
 #include <cmath>
 
-bool HitSphere(const Sphere &sphere, const Ray &r, double ray_tmin,
-               double ray_tmax, HitRecord &rec) {
+bool HitSphere(const Sphere &sphere, const Ray &r, Interval interval,
+               HitRecord &rec) {
   Vec3 oc = sphere.center - r.Origin();
   auto a = r.Direction().length_squared();
-  auto h = dot(r.Direction(), oc);
+  auto h = Dot(r.Direction(), oc);
   auto c = oc.length_squared() - sphere.radius * sphere.radius;
   auto discriminant = h * h - a * c;
 
@@ -15,16 +15,17 @@ bool HitSphere(const Sphere &sphere, const Ray &r, double ray_tmin,
 
   auto sqrt_discriminant = std::sqrt(discriminant);
 
+  // Find the nearest root that lies in the acceptable range.
   auto root = (-h - sqrt_discriminant) / a;
-  if (root < ray_tmin || root > ray_tmax) {
+  if (!interval.Surrounds(root)) {
     root = (-h + sqrt_discriminant) / a;
-    if (root < ray_tmin || root > ray_tmax)
+    if (!interval.Surrounds(root))
       return false;
   }
   rec.t = root;
   rec.p = r.At(rec.t);
   Vec3 outward_normal = (rec.p - sphere.center) / sphere.radius;
-  rec.set_face_normal(r, outward_normal);
+  rec.SetFaceNormal(r, outward_normal);
   rec.normal = (rec.p - sphere.center) / sphere.radius;
   return true;
 }
