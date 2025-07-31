@@ -4,6 +4,7 @@
 #include "../include/rtweekend.h"
 #include "../include/vec3.h"
 #include <iostream>
+#include <fstream>
 
 // Image
 const double aspect_ratio = 16.0 / 9.0;
@@ -79,7 +80,8 @@ Color RayColor(const Ray &r, const HittableList &world) {
 void Render(const HittableList &world) {
   Initialize();
 
-  std::cout << "P3\n" << image_width << ' ' << image_height << "\n255\n";
+  std::ofstream file("image.ppm");
+  file << "P3\n" << image_width << ' ' << image_height << "\n255\n";
 
   for (int j = 0; j < image_height; j++) {
     std::clog << "\rScanlines remaining: " << (image_height - j) << ' '
@@ -91,9 +93,10 @@ void Render(const HittableList &world) {
       Ray r(camera_center, ray_direction);
 
       Color pixel_color = RayColor(r, world);
-      WriteColor(std::cout, pixel_color);
+      WriteColor(file, pixel_color);
     }
   }
 
+  file.close();
   std::clog << "\rDone.                 \n";
 }

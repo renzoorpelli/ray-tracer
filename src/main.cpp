@@ -1,7 +1,13 @@
 
+#include "../include/camera.h"
 #include "../include/hittable.h"
 #include "../include/hittable_list.h"
-#include "../include/camera.h"
+#include <cstdlib>
+
+void OpenImage() {
+  auto open_img_cmd = "open ./image.ppm";
+  std::system(open_img_cmd);
+}
 
 int main() {
   // Render World
@@ -12,4 +18,5 @@ int main() {
       Hittable{HittableType::HITTABLE_SPHERE, {{Point3(0, -100.5, -1), 100}}});
 
   Render(world);
+  OpenImage();
 }
