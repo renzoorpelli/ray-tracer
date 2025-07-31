@@ -16,9 +16,9 @@ bool HitSphere(const Sphere &sphere, const Ray &r, Interval interval,
   auto sqrt_discriminant = std::sqrt(discriminant);
 
   // Find the nearest root that lies in the acceptable range.
-  auto root = (-h - sqrt_discriminant) / a;
+  auto root = (h - sqrt_discriminant) / a;
   if (!interval.Surrounds(root)) {
-    root = (-h + sqrt_discriminant) / a;
+    root = (h + sqrt_discriminant) / a;
     if (!interval.Surrounds(root))
       return false;
   }
