@@ -37,3 +37,4 @@ Build/
 bin/
 dist/
 out/
+CMakeFiles/
