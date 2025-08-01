@@ -3,6 +3,7 @@
 
 #include "hit_record.h"
 #include "interval.h"
+#include "ray.h"
 
 struct Sphere {
   Point3 center;

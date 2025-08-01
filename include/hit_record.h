@@ -2,6 +2,7 @@
 #define HIT_RECORD_H
 
 #include "rtweekend.h"
+#include "ray.h"
 
 struct HitRecord {
 public:

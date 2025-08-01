@@ -4,6 +4,7 @@
 #include "hit_record.h"
 #include "sphere.h"
 #include "interval.h"
+#include "ray.h"
 #include <variant>
 
 enum class HittableType {

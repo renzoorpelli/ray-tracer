@@ -8,19 +8,15 @@
 #include <iostream>
 using Color = Vec3;
 
-inline double Clamp(double x, double min, double max) {
-  if (x < min) return min;
-  if (x > max) return max;
-  return x;
-}
-
 /// @brief Write a single pixel color out to the standard output stream
 /// @param out
 /// @param pixel_color
-inline void WriteColor(std::ostream &out, const Color &pixel_color) {
-  auto r = pixel_color.x();
-  auto g = pixel_color.y();
-  auto b = pixel_color.z();
+inline void WriteColor(std::ostream &out, const Color &pixel_color)
+{
+  /// w/linear gamma transformation
+  auto r = LinearToGamma(pixel_color.x());
+  auto g = LinearToGamma(pixel_color.y());
+  auto b = LinearToGamma(pixel_color.z());
 
   // Translates [0,1] components values into the byte range [0, 255]
   int rbyte = int(BYTE_RANGE * Clamp(r, 0.000, 0.999));

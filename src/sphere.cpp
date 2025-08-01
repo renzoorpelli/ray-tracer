@@ -5,9 +5,9 @@
 bool HitSphere(const Sphere &sphere, const Ray &r, Interval interval,
                HitRecord &rec) {
   Vec3 oc = sphere.center - r.Origin();
-  auto a = r.Direction().length_squared();
+  auto a = r.Direction().LengthSquared();
   auto h = Dot(r.Direction(), oc);
-  auto c = oc.length_squared() - sphere.radius * sphere.radius;
+  auto c = oc.LengthSquared() - sphere.radius * sphere.radius;
   auto discriminant = h * h - a * c;
 
   if (discriminant < 0)
