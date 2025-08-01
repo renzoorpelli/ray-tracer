@@ -38,3 +38,8 @@ bin/
 dist/
 out/
 CMakeFiles/
+
+# Trash files xd
+*.cmake
+*.txt
+*.ppm
