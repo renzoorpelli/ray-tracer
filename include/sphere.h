@@ -10,7 +10,6 @@ struct Sphere {
   double radius;
 };
 
-bool HitSphere(const Sphere &sphere, const Ray &r, Interval interval,
-               HitRecord &rec);
+bool HitSphere(const Sphere &sphere, const Ray &r, Interval interval,HitRecord &rec);
 
 #endif

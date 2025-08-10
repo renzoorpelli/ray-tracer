@@ -35,7 +35,6 @@ Vec3 SampleSquare()
 
 void Initialize()
 {
-
   imageHeight = int(imageWidth / aspectRatio);
   imageHeight = (imageHeight < 1) ? 1 : imageHeight;
 

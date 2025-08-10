@@ -20,7 +20,6 @@ struct Hittable {
   } object;
 };
 
-bool HitObject(const Hittable &obj, const Ray &r, Interval interval,
-               HitRecord &rec);
+bool HitObject(const Hittable &obj, const Ray &r, Interval interval,HitRecord &rec);
 
 #endif

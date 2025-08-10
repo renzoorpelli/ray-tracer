@@ -99,16 +99,15 @@ inline Vec3 Cross(const Vec3 &u, const Vec3 &v)
 
 inline Vec3 UnitVector(const Vec3 &v) { return v / v.Length(); }
 
-static Vec3 Random()
-{
-  return Vec3(RandomDouble(), RandomDouble(), RandomDouble());
-}
+/// @brief
+/// @return
+static Vec3 Random() { return Vec3(RandomDouble(), RandomDouble(), RandomDouble()); }
 
-static Vec3 Random(double min, double max)
-{
-  return Vec3(RandomDouble(min, max), RandomDouble(min, max),
-              RandomDouble(min, max));
-}
+/// @brief
+/// @param min
+/// @param max
+/// @return
+static Vec3 Random(double min, double max) { return Vec3(RandomDouble(min, max), RandomDouble(min, max), RandomDouble(min, max)); }
 
 inline Vec3 RandomUnitVector()
 {
@@ -124,24 +123,11 @@ inline Vec3 RandomUnitVector()
 inline Vec3 RandomOnHemisphere(const Vec3 &normal)
 {
   Vec3 onUnitSphere = RandomUnitVector();
-  if (Dot(onUnitSphere, normal) > 0.0)
-    return onUnitSphere;
-  else
-    return -onUnitSphere;
+  return Dot(onUnitSphere, normal) > 0.0 ? onUnitSphere : -onUnitSphere;
 }
 
 inline double LinearToGamma(double linear)
 {
   return linear > 0 ? std::sqrt(linear) : 0;
-}
-
-
-inline double Clamp(double x, double min, double max)
-{
-  if (x < min)
-    return min;
-  if (x > max)
-    return max;
-  return x;
 }
 #endif

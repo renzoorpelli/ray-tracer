@@ -9,12 +9,12 @@ public:
   Point3 p;
   Vec3 normal;
   double t;
-  bool front_face;
-  void SetFaceNormal(const Ray &r, const Vec3 &outward_normal) {
+  bool frontFace;
+  void SetFaceNormal(const Ray &r, const Vec3 &outwardNormal) {
     // Set the hit record normal record
     // NOTE: paramether 'outward_normal' assume to have unit lenght
-    front_face = Dot(r.Direction(), outward_normal) < 0;
-    normal = front_face ? outward_normal : -outward_normal;
+    frontFace = Dot(r.Direction(), outwardNormal) < 0;
+    normal = frontFace ? outwardNormal : -outwardNormal;
   }
 };
 

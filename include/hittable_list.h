@@ -13,18 +13,18 @@ struct HittableList {
     if (items.empty())
       return false;
 
-    HitRecord temp_rec;
-    bool hit_anything = false;
-    auto closest_so_far = interval.max;
+    HitRecord tempRec;
+    bool hitAnything = false;
+    auto closestSoFar = interval.max;
 
     for (const auto &item : items) {
-      if (HitObject(item, r, Interval(interval.min, closest_so_far), temp_rec)) {
-        hit_anything = true;
-        closest_so_far = temp_rec.t;
-        rec = temp_rec;
+      if (HitObject(item, r, Interval(interval.min, closestSoFar), tempRec)) {
+        hitAnything = true;
+        closestSoFar = tempRec.t;
+        rec = tempRec;
       }
     }
-    return hit_anything;
+    return hitAnything;
   }
 
   void Add(Hittable item) { items.push_back(item); }
